@@ -29,7 +29,7 @@ public class UserService {
 	}
 	
 	public User login(User user) {
-		Optional<User> dbUser = userDAO.getUserbyUsername(user.getUsername());
+		Optional<User> dbUser = userDAO.getUserByUsername(user.getUsername());
 		if(dbUser.isPresent()) {
 			if(dbUser.get().getPassword().equals(user.getPassword())) {
 				return dbUser.get();
@@ -39,7 +39,7 @@ public class UserService {
 	}
 	
 	public User update(User user) {
-		Optional<User> dbUser = userDAO.getUserbyUsername(user.getUsername());
+		Optional<User> dbUser = userDAO.getUserByUsername(user.getUsername());
 		if(dbUser.isPresent()) {
 			userDAO.save(user);
 			return user;
