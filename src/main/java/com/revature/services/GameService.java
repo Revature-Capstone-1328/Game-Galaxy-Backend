@@ -1,8 +1,28 @@
 package com.revature.services;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.revature.models.Game;
+import com.revature.repositories.GameDAO;
 
 @Service
 public class GameService {
+	private GameDAO gameDao;
+	
+	@Autowired
+	public GameService(GameDAO gameDao) {
+		super();
+		this.gameDao = gameDao;
+	}
+	
+	
+	public Optional<List<Game>> getByName(String name){
+		return gameDao.findByName(name);
+	}
+		
 
 }
