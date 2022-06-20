@@ -42,7 +42,7 @@ public class UserController {
 		if(user != null) {
 			session.setAttribute("logged in", true);
 			session.setAttribute("user", user);
-			user.setPassword(null);
+			user.setPassword("");
 			return ResponseEntity.status(200).body(user);
 		}else {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
