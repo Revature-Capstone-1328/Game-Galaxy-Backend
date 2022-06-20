@@ -11,7 +11,7 @@ import com.revature.repositories.UserDAO;
 @Service
 public class UserService {
 	
-	private UserDAO userDAO;
+	protected UserDAO userDAO;
 	
 	@Autowired
 	public UserService(UserDAO userDAO) {
@@ -47,6 +47,10 @@ public class UserService {
 			return user;
 		}
 		return null;
+	}
+
+	public User getUserByUsername(String username) {
+		return userDAO.getUserByUsername(username).get();
 	}
 
 }
