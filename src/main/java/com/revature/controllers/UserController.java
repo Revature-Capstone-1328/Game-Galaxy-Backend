@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,11 +51,14 @@ public class UserController {
 	
 	@PutMapping
 	public ResponseEntity<User> updateUser(@RequestBody User user, HttpSession session){
+		System.out.println("Put method");
 		if((boolean)session.getAttribute("logged in")==true) {
-			userService.update(user);
+			user = userService.update(user);
+			System.out.println(user);
 			return ResponseEntity.status(200).body(user);
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
+	
 
 }
