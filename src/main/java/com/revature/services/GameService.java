@@ -23,13 +23,17 @@ public class GameService {
 	public Optional<List<Game>> getByName(String name){
 		return gameDao.findByName(name);
 	}
+	
 	public Game addGame(Game game) {
 	     game.setGameID(0);
 	     Game dbGame= gameDao.save(game);
 	     return dbGame;
-	     
-			
-		}
+	     }
+	
+	public Game addOrUpdateGame(Game game) {
+		Game dbGame = gameDao.save(game);
+		return dbGame;
+	}
 		
 
 }

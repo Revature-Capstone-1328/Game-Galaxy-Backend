@@ -15,11 +15,12 @@ import javax.persistence.Table;
 public class Game {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int gameID;
 	@Column(nullable = false)
 	private String name;
 	private double retailPrice;
+	private double steamRatingPercent;
+	private double metacriticScore;
 	private Date releaseDate;
 	private String publisher;
 	private String thumb;
@@ -29,11 +30,14 @@ public class Game {
 
 	}
 
-	public Game(int gameID, String name, double retailPrice, Date releaseDate, String publisher, String thumb) {
+	public Game(int gameID, String name, double retailPrice, double steamRatingPercent, double metacriticScore,
+			Date releaseDate, String publisher, String thumb) {
 		super();
 		this.gameID = gameID;
 		this.name = name;
 		this.retailPrice = retailPrice;
+		this.steamRatingPercent = steamRatingPercent;
+		this.metacriticScore = metacriticScore;
 		this.releaseDate = releaseDate;
 		this.publisher = publisher;
 		this.thumb = thumb;
@@ -87,15 +91,28 @@ public class Game {
 		this.thumb = thumb;
 	}
 
-	@Override
-	public String toString() {
-		return "Game [gameID=" + gameID + ", name=" + name + ", retailPrice=" + retailPrice + ", releaseDate="
-				+ releaseDate + ", publisher=" + publisher + ", thumb=" + thumb + "]";
+	public double getSteamRatingPercent() {
+		return steamRatingPercent;
 	}
+
+	public void setSteamRatingPercent(double steamRatingPercent) {
+		this.steamRatingPercent = steamRatingPercent;
+	}
+
+	public double getMetacriticScore() {
+		return metacriticScore;
+	}
+
+	public void setMetacriticScore(double metacriticScore) {
+		this.metacriticScore = metacriticScore;
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameID, name, publisher, releaseDate, retailPrice, thumb);
+		return Objects.hash(gameID, metacriticScore, name, publisher, releaseDate, retailPrice, steamRatingPercent,
+				thumb);
 	}
 
 	@Override
@@ -107,10 +124,22 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return gameID == other.gameID && Objects.equals(name, other.name) && Objects.equals(publisher, other.publisher)
+		return gameID == other.gameID
+				&& Double.doubleToLongBits(metacriticScore) == Double.doubleToLongBits(other.metacriticScore)
+				&& Objects.equals(name, other.name) && Objects.equals(publisher, other.publisher)
 				&& Objects.equals(releaseDate, other.releaseDate)
 				&& Double.doubleToLongBits(retailPrice) == Double.doubleToLongBits(other.retailPrice)
+				&& Double.doubleToLongBits(steamRatingPercent) == Double.doubleToLongBits(other.steamRatingPercent)
 				&& Objects.equals(thumb, other.thumb);
 	}
+
+	@Override
+	public String toString() {
+		return "Game [gameID=" + gameID + ", name=" + name + ", retailPrice=" + retailPrice + ", steamRatingPercent="
+				+ steamRatingPercent + ", metacriticScore=" + metacriticScore + ", releaseDate=" + releaseDate
+				+ ", publisher=" + publisher + ", thumb=" + thumb + "]";
+	}
+
+	
 
 }
