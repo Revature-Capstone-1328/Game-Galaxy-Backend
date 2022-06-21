@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,10 @@ public class GameService {
 		Game dbGame = gameDao.save(game);
 		return dbGame;
 	}
-		
+	
+	public List<Game> getAllGames(){
+		return gameDao.findAll();
+	}
+		 
 
 }
