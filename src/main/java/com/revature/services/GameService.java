@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,14 +24,22 @@ public class GameService {
 	public Optional<List<Game>> getByName(String name){
 		return gameDao.findByName(name);
 	}
+	
 	public Game addGame(Game game) {
 	     game.setGameID(0);
 	     Game dbGame= gameDao.save(game);
 	     return dbGame;
-	     
-			
-		}
-		
+	     }
+	
+	public Game addOrUpdateGame(Game game) {
+		Game dbGame = gameDao.save(game);
+		return dbGame;
+	}
+	
+	public List<Game> getAllGames(){
+		return gameDao.findAll();
+	}
+		 
 	
 	public Optional<Game> getById(int gameId) {
 		return gameDao.findById(gameId);
