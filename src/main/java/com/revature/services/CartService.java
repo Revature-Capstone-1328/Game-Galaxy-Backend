@@ -44,12 +44,13 @@ public class CartService {
 
 	public List<Game> getCartItems(User user) {
 		
-		return cartDao.findAllByUser(user);
+	//	return cartDao.findAllByUser(user);
+		return null;
 		
 	}
 
 	public void deleteCartItem(int gameId, User user) {
-		
+/*		
 		Optional<Game> opt = gameService.getById(gameId);
 		if(opt.isPresent()) {
 			Game game = opt.get();
@@ -58,12 +59,12 @@ public class CartService {
 			Cart dbCart = cartDao.getByUserandGame();
 			System.out.println(dbCart);
 			cartDao.delete(dbCart);
-		}
+		}*/
 	}
 	
 	public void deleteCartItems(User user) {
 		
-		cartDao.deleteByUser(user);
+	//	cartDao.deleteByUser(user);
 		
 	}
 }

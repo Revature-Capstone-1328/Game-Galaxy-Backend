@@ -10,10 +10,10 @@ import com.revature.models.User;
 
 public interface CartDAO extends JpaRepository<Cart,Integer>{
 
-	List<Game> findAllByUser(User user);
+	//List<Game> findAllByUser(User user);
 
-	void deleteByUser(User user);
+	//void deleteByUser(User user);
 
-	Cart getByUserandGame();
+	//Cart getByUserandGame();
 
 }

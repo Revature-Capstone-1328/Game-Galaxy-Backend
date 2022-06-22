@@ -19,6 +19,7 @@ import com.revature.models.Cart;
 import com.revature.models.Game;
 import com.revature.models.User;
 import com.revature.services.CartService;
+import com.revature.services.GameService;
 
 @RestController
 @RequestMapping("/cart")
@@ -32,7 +33,7 @@ public class CartController {
 		this.cartService = cartService;
 	}
 	
-	
+
 	@GetMapping
 	public ResponseEntity<List<Game>> getCartItems(HttpSession session){
 		
