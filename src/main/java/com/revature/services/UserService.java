@@ -31,9 +31,7 @@ public class UserService {
 	public User login(User user) {
 		Optional<User> dbUser = userDAO.getUserByUsername(user.getUsername());
 		if(dbUser.isPresent()) {
-			if(dbUser.get().getPassword().equals(user.getPassword())) {
-				return dbUser.get();
-			}
+			return dbUser.get();
 		}
 		return null;
 	}
