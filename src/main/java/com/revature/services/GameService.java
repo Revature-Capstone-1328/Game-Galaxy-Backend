@@ -31,5 +31,10 @@ public class GameService {
 			
 		}
 		
+	
+	public Optional<Game> getById(int gameId) {
+		return gameDao.findById(gameId);
+	}
+	
 
 }

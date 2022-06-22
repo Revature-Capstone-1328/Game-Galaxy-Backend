@@ -86,7 +86,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Orders [orderId=" + orderId + ", orderDate=" + orderDate + ", games=" + games + ", totalAmount="
+		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", games=" + games + ", totalAmount="
 				+ totalAmount + ", user=" + user + "]";
 	}
 
@@ -112,7 +112,6 @@ public class Order {
 				&& Double.doubleToLongBits(totalAmount) == Double.doubleToLongBits(other.totalAmount)
 				&& Objects.equals(user, other.user);
 	}
-	
-	
+
 	
 }
