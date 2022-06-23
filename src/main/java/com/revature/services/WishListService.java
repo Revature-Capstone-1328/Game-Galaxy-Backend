@@ -17,7 +17,6 @@ public class WishListService {
 	private WishListDAO wishListDao;
 	private GameDAO gameDao;
 	
-	@Autowired
 	public WishListService(WishListDAO wishListDao, GameDAO gameDao) {
 		super();
 		this.wishListDao = wishListDao;
