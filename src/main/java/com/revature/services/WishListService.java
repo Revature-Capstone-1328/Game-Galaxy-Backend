@@ -16,11 +16,13 @@ import com.revature.repositories.WishListDAO;
 public class WishListService {
 	private WishListDAO wishListDao;
 	private GameDAO gameDao;
+	private GameService gameService;
 	
-	public WishListService(WishListDAO wishListDao, GameDAO gameDao) {
+	public WishListService(WishListDAO wishListDao, GameDAO gameDao, GameService gameService) {
 		super();
 		this.wishListDao = wishListDao;
 		this.gameDao = gameDao;
+		this.gameService =gameService;
 	}
 	
 		
@@ -35,10 +37,11 @@ public class WishListService {
 	
 	public List<Game> getFavGames(User user) {
 		List<WishList> allWish = wishListDao.findByUserId(user.getId());
+		
 		List<Game> favList = new ArrayList<>();
 		for(WishList wish : allWish) {
 			if(wish.getGameID()!=0) {
-				favList.add(gameDao.getById(wish.getGameID()));
+				favList.add(gameService.getById(wish.getGameID()).get());
 			} 
 		}
 		return favList;
@@ -52,6 +55,7 @@ public class WishListService {
 			} 
 		}
 	}
+	
 	
 
 }
