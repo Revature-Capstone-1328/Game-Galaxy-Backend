@@ -25,7 +25,6 @@ public class Order {
 	private int orderId;
 	private Date orderDate;
 	@OneToMany(mappedBy = "gameID", fetch = FetchType.EAGER)
-	@JsonManagedReference
 	private List<Game> games = new ArrayList<>();
 	@ManyToOne
 	private User user;

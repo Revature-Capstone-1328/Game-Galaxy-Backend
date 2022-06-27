@@ -95,7 +95,7 @@ public class CartController {
 	@PostMapping
 	public ResponseEntity<Order> addToOrderHistory(@RequestBody Order order, HttpSession session) {
 		
-		System.out.println("order order");
+		//System.out.println("order order");
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
 			if (orderService.addOrder(order,user) != null) {

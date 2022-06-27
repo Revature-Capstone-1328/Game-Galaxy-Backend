@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +48,9 @@ public class OrderService {
 	
 	public Order addOrder(Order newOrder, User user) {
 		
+		//System.out.println(new Date(0));
+		//newOrder.setOrderDate(new Date(0));
+		System.out.println(newOrder.getOrderDate());
 		return orderDao.save(newOrder);
 	}
 	
