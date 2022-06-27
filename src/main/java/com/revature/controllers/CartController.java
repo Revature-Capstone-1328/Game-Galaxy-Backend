@@ -17,22 +17,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Cart;
 import com.revature.models.Game;
+import com.revature.models.Order;
 import com.revature.models.User;
 import com.revature.services.CartService;
 import com.revature.services.GameService;
+import com.revature.services.OrderService;
 
 @RestController
 @RequestMapping("/cart")
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class CartController {
 	private CartService cartService;
+	private OrderService orderService;
+	
 	
 	@Autowired
-	public CartController(CartService cartService) {
+	public CartController(CartService cartService,OrderService orderService) {
 		super();
 		this.cartService = cartService;
+		this.orderService = orderService;
 	}
-	
+/*
 
 	@GetMapping
 	public ResponseEntity<List<Game>> getCartItems(HttpSession session){
@@ -72,7 +77,34 @@ public class CartController {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		
 	}
+	*/
 	
+	@GetMapping()
+	public ResponseEntity<List<Order>> getOrderHistory(HttpSession session){
+		
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			User user = (User)session.getAttribute("user");
+			List<Order> orders = orderService.getOrdersByUser(user);
+			return ResponseEntity.status(HttpStatus.OK).body(orders);
+		}
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		
+	}
 	
+
+	@PostMapping
+	public ResponseEntity<Order> addToOrderHistory(@RequestBody Order order, HttpSession session) {
+		
+		//System.out.println("order order");
+		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
+			User user = (User)session.getAttribute("user");
+			if (orderService.addOrder(order,user) != null) {
+				return ResponseEntity.status(HttpStatus.CREATED).build();
+			}
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		
+	}
 	
 }
