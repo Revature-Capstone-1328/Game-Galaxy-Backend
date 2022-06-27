@@ -40,10 +40,8 @@ public class WishListController {
         System.out.println("user: "+(User)session.getAttribute("user"));
         System.out.println("loggedin: "+session.getAttribute("logged in"));
         if(session.getAttribute("logged in")!=null && (Boolean)session.getAttribute("logged in")) {
-        	System.out.println("Logged in!");
             User user = (User)session.getAttribute("user");
             Game game = gameService.getById(id).get();
-            System.out.println("Game!");
             wishListService.addFavouriteGame(game,user);
             System.out.println("Wishlist added!");
             return ResponseEntity.status(201).build();
@@ -52,13 +50,16 @@ public class WishListController {
     }
     
     @GetMapping
-    public List<String> getFavGames(HttpSession session){
+    public ResponseEntity<List<Game>> getFavGames(HttpSession session){
         if(session.getAttribute("logged in")!=null && (Boolean)session.getAttribute("logged in")) {
+        	System.out.println("smth");
             User user = (User)session.getAttribute("user");
-            return wishListService.getFavGames(user);
+            List<Game> list = wishListService.getFavGames(user);
+            return ResponseEntity.status(200).body(list); 
         }
         return null;
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Game> deleteFavCharacter(@PathVariable("id") int id, HttpSession session){
