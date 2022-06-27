@@ -44,7 +44,7 @@ public class OrderService {
 	}
 	
 	
-	public Order addOrder(Order newOrder) {
+	public Order addOrder(Order newOrder, User user) {
 		
 		return orderDao.save(newOrder);
 	}
