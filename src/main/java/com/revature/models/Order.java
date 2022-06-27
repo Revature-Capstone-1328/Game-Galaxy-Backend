@@ -24,8 +24,8 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	private Date orderDate;
-	@OneToMany(mappedBy = "gameID", fetch = FetchType.EAGER)
-	private List<Game> games = new ArrayList<>();
+	@OneToMany
+	private List<Game> games;
 	@ManyToOne
 	private User user;
 	
@@ -41,6 +41,7 @@ public class Order {
 		this.user = user;
 	}
 
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -98,6 +99,9 @@ public class Order {
 		return Objects.equals(games, other.games) && Objects.equals(orderDate, other.orderDate)
 				&& orderId == other.orderId && Objects.equals(user, other.user);
 	}
+
+	
+	
 	
 }
 	

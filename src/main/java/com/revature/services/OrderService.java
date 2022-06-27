@@ -48,9 +48,7 @@ public class OrderService {
 	
 	public Order addOrder(Order newOrder, User user) {
 		
-		//System.out.println(new Date(0));
-		//newOrder.setOrderDate(new Date(0));
-		System.out.println(newOrder.getOrderDate());
+		newOrder.setUser(user);
 		return orderDao.save(newOrder);
 	}
 	
