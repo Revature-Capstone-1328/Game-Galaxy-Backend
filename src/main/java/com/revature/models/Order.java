@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,8 +25,8 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	private Date orderDate;
-	@OneToMany(mappedBy = "gameID", fetch = FetchType.EAGER)
-	private List<Game> games = new ArrayList<>();
+	@ManyToMany
+	private List<Game> games;
 	@ManyToOne
 	private User user;
 	
@@ -41,6 +42,7 @@ public class Order {
 		this.user = user;
 	}
 
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -98,6 +100,9 @@ public class Order {
 		return Objects.equals(games, other.games) && Objects.equals(orderDate, other.orderDate)
 				&& orderId == other.orderId && Objects.equals(user, other.user);
 	}
+
+	
+	
 	
 }
 	

@@ -85,9 +85,13 @@ public class CartController {
 		if(session.getAttribute("logged in")!=null&&(Boolean)session.getAttribute("logged in")) {
 			User user = (User)session.getAttribute("user");
 			List<Order> orders = orderService.getOrdersByUser(user);
-			return ResponseEntity.status(HttpStatus.OK).body(orders);
+			if (orders != null) 
+				return ResponseEntity.status(HttpStatus.OK).body(orders);
+			else 
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
 		}
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		
 	}
 	
