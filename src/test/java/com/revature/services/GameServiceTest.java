@@ -36,4 +36,10 @@ public class GameServiceTest {
 		assertEquals(221, gamesNumber);
 	}
 	
+	@Test
+	public void testfindById() {
+		
+		Optional<Game> game = gameService.getById(2);
+		assertEquals("Evochron Mercenary", game.get().getName());
+	}
 }
