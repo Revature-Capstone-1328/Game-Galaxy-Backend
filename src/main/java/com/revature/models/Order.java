@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,7 +25,7 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	private Date orderDate;
-	@OneToMany
+	@ManyToMany
 	private List<Game> games;
 	@ManyToOne
 	private User user;
