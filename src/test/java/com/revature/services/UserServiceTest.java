@@ -1,55 +1,39 @@
 package com.revature.services;
 
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Optional;
-
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.revature.models.User;
-import com.revature.repositories.UserDAO;
 
 @SpringBootTest
 public class UserServiceTest {
-	
-	@Autowired
-	private UserDAO userDAO;
 
 	@Autowired
 	private UserService userService;
-
-	User user;
 	
-	@BeforeEach
-	void initUser() {
-		user = new User();
-		user.setUsername("Puru");
-		user.setPassword("Hello");
-		user.seteMail("a@b.com");
-	}
 	@Test
-	void registerAndloginUser() {
-		assertEquals(true, userService.register(user));
-		User loggedinuser = userService.login(user);
-		assertEquals("Puru", loggedinuser.getUsername());
+	public void testgetUserByUsername() {
+		User user = userService.getUserByUsername("paul");
+		assertEquals("paulkita@gmail.com", user.geteMail());
 	}
+	
 	@Test
-	void updateUser() {
-		// initUser();
-		user.seteMail("x@y.com");
-		userService.update(user);
-		Optional<User> updatedUser = userDAO.getUserByUsername("Puru");
-		assertEquals("x@y.com", updatedUser.get().geteMail());
+	public void testlogin() {
+        User user = userService.getUserByUsername("Puru1");
+        User loggedUser = userService.login(user);
+        assertEquals(loggedUser, user);
+    }
+	
+	@Test
+	public void testupdate() {
+		User user = new User ("user", "password", "email@email.com");
+		User userToUpdate = userService.update(user);
+		assertEquals("email@email.com", userToUpdate.geteMail());
 	}
+	
 }
 
 
