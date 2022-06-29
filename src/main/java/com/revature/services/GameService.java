@@ -25,6 +25,7 @@ public class GameService {
 		return gameDao.findByName(name);
 	}
 	
+	/*
 	public Game addGame(Game game) {
 	     game.setGameID(0);
 	     Game dbGame= gameDao.save(game);
@@ -35,11 +36,11 @@ public class GameService {
 		Game dbGame = gameDao.save(game);
 		return dbGame;
 	}
+	*/
 	
 	public List<Game> getAllGames(){
 		return gameDao.findAll();
-	}
-		 
+	}	 
 	
 	public Optional<Game> getById(int gameId) {
 		return gameDao.findById(gameId);

@@ -37,6 +37,7 @@ public class GameController {
 		return ResponseEntity.status(200).body(list);
 	}
 	
+	/*
 	@PostMapping
 	public ResponseEntity<Game> addGame(@RequestBody Game game){
 		if(game!=null) {
@@ -45,6 +46,6 @@ public class GameController {
 		}
 		return ResponseEntity.status(403).build();
 	}
-	
+	*/
 
 }
