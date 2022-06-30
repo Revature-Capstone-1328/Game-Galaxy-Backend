@@ -8,7 +8,7 @@ Game Galaxy is an E-commerce shop where customers can buy and find the best deal
 
 ## Technologies Used
 
-###Frontend Technologies
+<h2>Frontend Technologies</h2>
 
 *	HTML5
 *	CSS3
@@ -53,15 +53,15 @@ You will need to create an EC2 if you will want to deploy the application on a v
     *	Select github project and put the repository link
     *	Go to Source Code Management and select Git. There you will have to put the link from the repository(the one when you want to clone it, with .git at the end).          Also, change the branch specifier in main.
     *	Build Triggers: select Git. If you want to have an automatic build every time someone pushes the code to the repository. (you will also need to set up GitHub hooks)
-     *	Build: you have to copy the next code(for the first time running you don’t need the first line):
-        docker rm $(docker stop $(docker ps -a -q --filter ancestor=”name-img” --format={{.ID}}))
-        export MAVEN_HOME=/usr/local/apache-maven
-        export PATH=$PATH:$MAVEN_HOME/bin
-        mvn --version
-        mvn package -Dmaven.test.skip
-        docker rmi -f name-img
-        docker build . -t name-img
-        docker run -d -p 8087:8087 name-img
+     *	Build: you have to copy the next code(for the first time running you don’t need the first line):  
+        docker rm $(docker stop $(docker ps -a -q --filter ancestor=”name-img” --format={{.ID}}))  
+        export MAVEN_HOME=/usr/local/apache-maven  
+        export PATH=$PATH:$MAVEN_HOME/bin  
+        mvn --version  
+        mvn package -Dmaven.test.skip  
+        docker rmi -f name-img  
+        docker build . -t name-img  
+        docker run -d -p 8087:8087 name-img  
 8.	Now you can access your container in your browser with your EC2 IP and the port from the last line from the last step, point d.
 
 ##Todo/Stretch goals
