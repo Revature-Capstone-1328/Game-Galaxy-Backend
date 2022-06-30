@@ -17,7 +17,7 @@ Game Galaxy is an E-commerce shop where customers can buy and find the best deal
 *	TypeScript
 *	JavaScript ES6
 
-##Backend Technologies
+<h2>Backend Technologies</h2>
 
 *	Java8
 *	Spring Data JPA
@@ -27,7 +27,7 @@ Game Galaxy is an E-commerce shop where customers can buy and find the best deal
 *	Maven
 *	Embedded Tomcat Server
 
-##DevOps Technology
+<h2>DevOps Technology</h2>
 
 You will need to create an EC2 if you will want to deploy the application on a virtual machine. In addition, you will need to install git, maven, docker, and Jenkins on EC2. 
 
@@ -64,7 +64,7 @@ You will need to create an EC2 if you will want to deploy the application on a v
         docker run -d -p 8087:8087 name-img  
 8.	Now you can access your container in your browser with your EC2 IP and the port from the last line from the last step, point d.
 
-##Todo/Stretch goals
+<h2>Todo/Stretch goals</h2>
 
 * Tech Support Chat
 * Notifications
