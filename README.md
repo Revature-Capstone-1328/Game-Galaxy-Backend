@@ -2,12 +2,12 @@
 Backend for the Game Galaxy Project
 
 ## Project Description
- – – – – -
+
  
 Game Galaxy is an E-commerce shop where customers can buy and find the best deals for video games. The customer can login, register, and add to the cart the items they want to buy. Items can be searched through the search bar and also if they want a type of game rated on a specific field, they have the possibility to select that from the filter. Customers are able also to make their Wishlist if they want to purchase something later and see the past orders from their account. 
 
 ## Technologies Used
- – – – – -
+
 ###Frontend Technologies
 
 *	HTML5
@@ -42,9 +42,9 @@ You will need to create an EC2 if you will want to deploy the application on a v
     *	tar xvf apache-maven-3.8.6-bin.tar.gz
     *	mv apache-maven-3.8.6  /usr/local/apache-maven
     *	sudo vim ~/.bashrc, press I for editing then put the exports and then press ESC and :wq got writing and saving
-    *	export M2_HOME=/usr/local/apache-maven
-        ** export M2=$M2_HOME/bin 
-        ** export PATH=$M2:$PATH
+    *	export M2_HOME=/usr/local/apache-maven  
+        export M2=$M2_HOME/bin  
+        export PATH=$M2:$PATH  
     *	source ~/.bashrc
     *	mvn -version
 5.	You load up Jenkins with EC2 IP4 address on port 8080 (check the Jenkins installing link in step 1)
